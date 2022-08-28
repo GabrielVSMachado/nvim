@@ -50,5 +50,20 @@ packer.startup(function ()
 				},
 			}
 		end,
+		setup = function()
+			require "core.mappings".nvimTree()
+		end
 	}
+
+	use {
+		"neovim/nvim-lspconfig",
+		opt = true,
+		config = function()
+			require "configs.lspconfig"
+		end,
+		setup = function()
+			require "core.mappings".lspConfig()
+		end
+	}
+
 end)
