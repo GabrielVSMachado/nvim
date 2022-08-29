@@ -3,7 +3,7 @@ if not ok then error("Can't load packer") return end
 
 local use = packer.use
 
-packer.startup(function ()
+packer.startup(function()
 	use "wbthomason/packer.nvim"
 
 	use {
@@ -24,7 +24,7 @@ packer.startup(function ()
 			if not ok then return end
 
 			ts.setup {
-				ensure_installed = {"c", "cpp", "lua", "python"},
+				ensure_installed = { "c", "cpp", "lua", "python" },
 				highlight = {
 					enable = true,
 					use_languagetree = true,
@@ -35,7 +35,7 @@ packer.startup(function ()
 
 	use {
 		"kyazdani42/nvim-tree.lua",
-		cmd = {"NvimTreeToggle", "NvimTreeFocus"},
+		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 		requires = {
 			"kyazdani42/nvim-web-devicons",
 		},
@@ -57,6 +57,8 @@ packer.startup(function ()
 
 	use {
 		"neovim/nvim-lspconfig",
+		opt = true,
+		event = "BufRead",
 		config = function()
 			require "configs.lspconfig"
 		end,
@@ -65,4 +67,51 @@ packer.startup(function ()
 		end
 	}
 
+	use {
+		"rafamadriz/friendly-snippets",
+		module = { "cmp", "cmp_nvim_lsp" },
+		event = "InsertEnter"
+	}
+
+	use {
+		"hrsh7th/nvim-cmp",
+		after = "friendly-snippets",
+		config = function()
+			require "configs.cmp"
+		end
+	}
+
+	use {
+		"L3MON4D3/LuaSnip",
+		after = "nvim-cmp",
+		wants = "friendly-snippets",
+		config = function()
+			require "configs.others".luaSnip()
+		end
+	}
+
+	use {
+		"saadparwaiz1/cmp_luasnip",
+		after = "LuaSnip"
+	}
+
+	use {
+		"hrsh7th/cmp-nvim-lua",
+		after = "cmp_luasnip",
+	}
+
+	use {
+		"hrsh7th/cmp-nvim-lsp",
+		after = "cmp-nvim-lua",
+	}
+
+	use {
+		"hrsh7th/cmp-buffer",
+		after = "cmp-nvim-lsp",
+	}
+
+	use {
+		"hrsh7th/cmp-path",
+		after = "cmp-buffer",
+	}
 end)

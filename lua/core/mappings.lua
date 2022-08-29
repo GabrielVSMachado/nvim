@@ -1,5 +1,5 @@
 local function map(mode, lhs, rhs, opts, lsp)
-	local options = {noremap = true, silent = true}
+	local options = { noremap = true, silent = true }
 	if opts then
 		options = vim.tbl_extend("force", options, opts)
 	end
@@ -28,7 +28,7 @@ M.lspConfigOnAttach = function(bufopts)
 	map('n', '<leader>rn', ":lua vim.lsp.buf.rename()<CR>", bufopts)
 	map('n', '<leader>ca', ":lua vim.lsp.buf.code_action()<CR>", bufopts)
 	map('n', 'gr', ":lua vim.lsp.buf.references()<CR>", bufopts)
-	map('n', '<leader>f', ":lua vim.lsp.buf.formatting()<CR>", bufopts)
+	map('n', '<leader>f', ":lua vim.lsp.buf.format({async = true})<CR>", bufopts)
 end
 
 M.lspConfig = function()
