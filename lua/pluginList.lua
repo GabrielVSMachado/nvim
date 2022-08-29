@@ -114,4 +114,13 @@ packer.startup(function()
 		"hrsh7th/cmp-path",
 		after = "cmp-buffer",
 	}
+
+	use {
+		"numToStr/Comment.nvim",
+		module = "Comment",
+		keys = { "gc", "gb" },
+		config = function ()
+			require "Comment".setup {}
+		end,
+	}
 end)
