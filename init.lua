@@ -1,3 +1,3 @@
 require "options"
 require "pluginList"
-require "core.mappings"
+require "core.mappings".utils()

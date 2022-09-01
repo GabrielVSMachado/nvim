@@ -38,4 +38,8 @@ M.lspConfig = function()
 	map('n', '<leader>q', ":lua vim.diagnostic.setloclist()<CR>")
 end
 
+M.utils = function()
+	map('t', '<ESC>', '<C-\\><C-n>')
+end
+
 return M
