@@ -57,8 +57,6 @@ packer.startup(function()
 
 	use {
 		"neovim/nvim-lspconfig",
-		opt = true,
-		event = "BufRead",
 		config = function()
 			require "configs.lspconfig"
 		end,
