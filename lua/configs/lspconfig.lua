@@ -54,6 +54,11 @@ lspconfig.sumneko_lua.setup {
 	}
 }
 
+lspconfig.pylsp.setup {
+	capabilities = capabilities,
+	on_attach = on_attach
+}
+
 capabilities.offsetEncoding = { "utf-16" }
 lspconfig.clangd.setup {
 	on_attach = on_attach,
