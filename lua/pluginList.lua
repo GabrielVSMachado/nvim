@@ -130,4 +130,15 @@ packer.startup(function()
 			require "configs.others".autoPairs()
 		end
 	}
+
+	use {
+		"williamboman/mason.nvim",
+		config = function ()
+			local ok_, module = pcall(require, "mason")
+			if not ok_ then
+				return
+			end
+			module.setup()
+		end
+	}
 end)
