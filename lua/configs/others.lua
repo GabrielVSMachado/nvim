@@ -14,4 +14,20 @@ M.luaSnip = function()
 	})
 end
 
+M.autoPairs = function()
+	local ok_autopairs, autopairs = pcall(require, "nvim-autopairs")
+	local ok_cmp, cmp = pcall(require, "cmp")
+
+	if not ok_autopairs or not ok_cmp then
+		return
+	end
+
+	autopairs.setup({})
+	local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+	cmp.event:on(
+		'confirm_done',
+		cmp_autopairs.on_confirm_done()
+	)
+end
+
 return M

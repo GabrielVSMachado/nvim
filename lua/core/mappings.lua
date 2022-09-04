@@ -13,7 +13,7 @@ local M = {}
 --NvimTree
 M.nvimTree = function()
 	map('n', '<C-n>', ':NvimTreeToggle<CR>')
-	map('n', '<leader>e', ':NvimTreeFocus<CR>')
+	map('n', '<leader>a', ':NvimTreeFocus<CR>')
 end
 
 M.lspConfigOnAttach = function(bufopts)
@@ -36,6 +36,10 @@ M.lspConfig = function()
 	map('n', '[d', ":lua vim.diagnostic.goto_prev()<CR>")
 	map('n', ']d', ":lua vim.diagnostic.goto_next()<CR>")
 	map('n', '<leader>q', ":lua vim.diagnostic.setloclist()<CR>")
+end
+
+M.utils = function()
+	map('t', '<Esc>', '<C-\\><C-n>')
 end
 
 return M

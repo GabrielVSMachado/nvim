@@ -121,4 +121,13 @@ packer.startup(function()
 			require "Comment".setup {}
 		end,
 	}
+
+	use {
+		"windwp/nvim-autopairs",
+		opt = true,
+		event = "InsertEnter",
+		config = function ()
+			require "configs.others".autoPairs()
+		end
+	}
 end)
