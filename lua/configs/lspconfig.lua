@@ -59,7 +59,6 @@ lspconfig.pylsp.setup {
 	on_attach = on_attach
 }
 
-capabilities.offsetEncoding = { "utf-16" }
 lspconfig.clangd.setup {
 	on_attach = on_attach,
 	capabilities = capabilities

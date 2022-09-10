@@ -40,6 +40,7 @@ end
 
 M.utils = function()
 	map('t', '<Esc>', '<C-\\><C-n>')
+    map('n', '<F12>', ':Stdheader<CR>')
 end
 
 return M

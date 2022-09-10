@@ -141,4 +141,21 @@ packer.startup(function()
 			module.setup()
 		end
 	}
+
+	use {
+		'eduardomosko/header42.nvim',
+		opt = true,
+		cmd = {"Stdheader"},
+		config = function ()
+			local ok, module = pcall(require, "header42")
+			if not ok then
+				error("Condn't load header42")
+				return
+			end
+			module.setup({
+				user=os.getenv("USER42"),
+				mail=os.getenv("EMAIL_42")
+			})
+		end
+	}
 end)

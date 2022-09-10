@@ -3,9 +3,10 @@ local opt = vim.opt
 
 local global_options = {
 	list = true,
-	tabstop = 4,
+	tabstop = 2,
 	smarttab = true,
-	shiftwidth = 4,
+	expandtab = true,
+	shiftwidth = 2,
 	autoindent = true,
 	smartindent = true,
 	smartcase = true,
