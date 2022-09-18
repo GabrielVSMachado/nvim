@@ -39,15 +39,15 @@ M.lspConfig = function()
 end
 
 M.telescope = function()
-  map('n', '<leader>ff', ':Telescope find_files<CR>')
-  map('n', '<leader>fg', ':Telescope live_grep<CR>')
-  map('n', '<leader>fb', 'Telescope buffers<CR>')
-  map('n', '<leader>fh', ':Telescope help_tags<CR>')
+	map('n', '<leader>ff', ':Telescope find_files<CR>')
+	map('n', '<leader>fg', ':Telescope live_grep<CR>')
+	map('n', '<leader>fb', 'Telescope buffers<CR>')
+	map('n', '<leader>fh', ':Telescope help_tags<CR>')
 end
 
 M.utils = function()
 	map('t', '<Esc>', '<C-\\><C-n>')
-  map('n', '<F12>', ':Stdheader<CR>')
+	map('n', '<F12>', ':Stdheader<CR>')
 end
 
 return M

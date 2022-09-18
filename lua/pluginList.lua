@@ -117,7 +117,7 @@ packer.startup(function()
 		"numToStr/Comment.nvim",
 		module = "Comment",
 		keys = { "gc", "gb" },
-		config = function ()
+		config = function()
 			require "Comment".setup {}
 		end,
 	}
@@ -126,14 +126,14 @@ packer.startup(function()
 		"windwp/nvim-autopairs",
 		opt = true,
 		event = "InsertEnter",
-		config = function ()
+		config = function()
 			require "configs.others".autoPairs()
 		end
 	}
 
 	use {
 		"williamboman/mason.nvim",
-		config = function ()
+		config = function()
 			local ok_, module = pcall(require, "mason")
 			if not ok_ then
 				return
@@ -145,36 +145,36 @@ packer.startup(function()
 	use {
 		'eduardomosko/header42.nvim',
 		opt = true,
-		cmd = {"Stdheader"},
-		config = function ()
+		cmd = { "Stdheader" },
+		config = function()
 			local ok, module = pcall(require, "header42")
 			if not ok then
 				error("Condn't load header42")
 				return
 			end
 			module.setup({
-				user=os.getenv("USER42"),
-				mail=os.getenv("EMAIL_42")
+				user = os.getenv("USER42"),
+				mail = os.getenv("EMAIL_42")
 			})
 		end
 	}
 
-  use {
-    'nvim-telescope/telescope.nvim',
-    cmd = 'Telescope',
-    tag = '0.1.0',
-    requires = {
-      {'nvim-lua/plenary.nvim'}
-    },
-    config = function()
-      local _ok, module = pcall(require, 'telescope')
-      if not _ok then return end
+	use {
+		'nvim-telescope/telescope.nvim',
+		cmd = 'Telescope',
+		tag = '0.1.0',
+		requires = {
+			{ 'nvim-lua/plenary.nvim' }
+		},
+		config = function()
+			local _ok, module = pcall(require, 'telescope')
+			if not _ok then return end
 
-      module.setup{}
-    end,
-    setup = function()
-      require("core.mappings").telescope()
-    end
-  }
+			module.setup {}
+		end,
+		setup = function()
+			require("core.mappings").telescope()
+		end
+	}
 
 end)

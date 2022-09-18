@@ -1,12 +1,14 @@
 local g = vim.g
 local opt = vim.opt
+local file_extension =  vim.fn.expand('%:e')
+local is_cpp_or_hpp = file_extension == 'cpp' or file_extension == 'hpp'
 
 local global_options = {
 	list = true,
-	tabstop = 2,
+	tabstop = is_cpp_or_hpp and 2 or 4,
 	smarttab = true,
-	expandtab = true,
-	shiftwidth = 2,
+	expandtab = is_cpp_or_hpp and true or false,
+	shiftwidth = is_cpp_or_hpp and 2 or 4,
 	autoindent = true,
 	smartindent = true,
 	smartcase = true,
