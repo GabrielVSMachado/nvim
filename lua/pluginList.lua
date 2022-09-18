@@ -158,4 +158,23 @@ packer.startup(function()
 			})
 		end
 	}
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    tag = '0.1.0',
+    requires = {
+      {'nvim-lua/plenary.nvim'}
+    },
+    config = function()
+      local _ok, module = pcall(require, 'telescope')
+      if not _ok then return end
+
+      module.setup{}
+    end,
+    setup = function()
+      require("core.mappings").telescope()
+    end
+  }
+
 end)
