@@ -12,8 +12,8 @@ local M = {}
 
 --NvimTree
 M.nvimTree = function()
-	map('n', '<C-n>', ':NvimTreeToggle<CR>')
 	map('n', '<leader>a', ':NvimTreeFocus<CR>')
+  map('n', '<C-n>', ':NvimTreeToggle<CR>')
 end
 
 M.lspConfigOnAttach = function(bufopts)
@@ -21,7 +21,7 @@ M.lspConfigOnAttach = function(bufopts)
 	map('n', 'gd', ":lua vim.lsp.buf.definition()<CR>", bufopts)
 	map('n', 'K', ":lua vim.lsp.buf.hover()<CR>", bufopts)
 	map('n', 'gi', ":lua vim.lsp.buf.implementation()<CR>", bufopts)
-	map('n', '<C-k>', ":lua vim.lsp.buf.signature_help()<CR>", bufopts)
+	map('n', '<C-s>', ":lua vim.lsp.buf.signature_help()<CR>", bufopts)
 	map('n', '<leader>wa', ":lua vim.lsp.buf.add_workspace_folder()<CR>", bufopts)
 	map('n', '<leader>wr', ":lua vim.lsp.buf.remove_workspace_folder()<CR>", bufopts)
 	map('n', '<leader>D', ":lua vim.lsp.buf.type_definition()<CR>", bufopts)
@@ -48,6 +48,20 @@ end
 M.utils = function()
 	map('t', '<Esc>', '<C-\\><C-n>')
 	map('n', '<F12>', ':Stdheader<CR>')
+
+  -- Move between windows
+  map('n', '<C-h>', '<C-w>h')
+  map('n', '<C-j>', '<C-w>j')
+  map('n', '<C-k>', '<C-w>k')
+  map('n', '<C-l>', '<C-w>l')
+
+  -- Selection helper
+  map('v', '>', '>gv')
+  map('v', '<', '<gv')
+
+  -- Move between lines
+  map('v', '<A-j>', ':m .+1<CR>==gv')
+  map('v', '<A-k>', ':m .-2<CR>==gv')
 end
 
 return M

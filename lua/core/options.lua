@@ -18,7 +18,8 @@ local global_options = {
 	clipboard = "unnamedplus",
 	undolevels = 400,
 	undofile = true,
-	scrolloff = 5
+	scrolloff = 5,
+  termguicolors=true
 }
 
 local disabled_built_ins = {
