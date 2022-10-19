@@ -19,7 +19,8 @@ local global_options = {
 	undolevels = 400,
 	undofile = true,
 	scrolloff = 5,
-  termguicolors=true
+  termguicolors=true,
+  colorcolumn='80'
 }
 
 local disabled_built_ins = {
