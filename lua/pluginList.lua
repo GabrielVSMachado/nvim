@@ -187,4 +187,20 @@ packer.startup(function()
     end
   }
 
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      local ok, module = pcall(require, 'indent_blankline')
+      if not ok then
+        vim.notify("Could'n load indent_blankline !!!")
+        return
+      end
+
+      module.setup {
+        show_current_context = false,
+        show_current_context_start = false,
+      }
+    end
+  }
+
 end)
