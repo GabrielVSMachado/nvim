@@ -60,10 +60,12 @@ M.utils = function()
   map('v', '<', '<gv')
 
   -- Move between lines
-  map('v', '<A-j>', ':m .+1<CR>==gv')
-  map('v', '<A-k>', ':m .-2<CR>==gv')
-  map('x', '<A-j>', ":move '>+1<CR>gv-gv")
-  map('x', '<A-k>', ":move '<-2<CR>gv-gv")
+  -- <A-j> ==> ʝ in macos
+  -- <A-k> ==> ĸ in macos
+  map('v', 'ʝ', ':m .+1<CR>==gv')
+  map('v', 'ĸ', ':m .-2<CR>==gv')
+  map('x', 'ʝ', ":move '>+1<CR>gv-gv")
+  map('x', 'ĸ', ":move '<-2<CR>gv-gv")
 end
 
 return M
