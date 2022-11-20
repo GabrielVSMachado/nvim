@@ -7,10 +7,12 @@ packer.startup(function()
   use "wbthomason/packer.nvim"
 
   use {
-    "catppuccin/nvim",
-    as = "catppuccin",
+    "metalelf0/jellybeans-nvim",
+    requires = {
+      "rktjmp/lush.nvim"
+    },
     event = "VimEnter",
-    config = function()
+    config = function ()
       require "configs.colorscheme"
     end
   }
@@ -76,6 +78,9 @@ packer.startup(function()
 
   use {
     "hrsh7th/nvim-cmp",
+    requires = {
+      "onsails/lspkind.nvim"
+    },
     after = "friendly-snippets",
     config = function()
       require "configs.cmp"
