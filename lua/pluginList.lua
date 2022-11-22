@@ -7,13 +7,9 @@ packer.startup(function()
   use "wbthomason/packer.nvim"
 
   use {
-    "metalelf0/jellybeans-nvim",
-    requires = {
-      "rktjmp/lush.nvim"
-    },
-    event = "VimEnter",
-    config = function ()
-      require "configs.colorscheme"
+    'Mofiqul/vscode.nvim',
+    config = function()
+      require 'configs.colorscheme'
     end
   }
 
@@ -208,4 +204,18 @@ packer.startup(function()
     end
   }
 
+  use {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      local ok, module = pcall(require, "gitsigns")
+      if not ok then
+        vim.notify("Couldn't load gitsigns !!!")
+        return
+      end
+
+      module.setup {
+        on_attach = require "core.mappings".gitsigns
+      }
+    end
+  }
 end)
