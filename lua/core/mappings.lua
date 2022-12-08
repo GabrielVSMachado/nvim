@@ -28,7 +28,7 @@ M.lspConfigOnAttach = function(bufopts)
   map('n', '<leader>rn', ":lua vim.lsp.buf.rename()<CR>", bufopts)
   map('n', '<leader>ca', ":lua vim.lsp.buf.code_action()<CR>", bufopts)
   map('n', 'gr', ":lua vim.lsp.buf.references()<CR>", bufopts)
-  map('n', '<leader>f', ":lua vim.lsp.buf.format({async = true})<CR>", bufopts)
+  map('n', '<leader>fl', ":lua vim.lsp.buf.format({async = true})<CR>", bufopts)
 end
 
 M.lspConfig = function()
