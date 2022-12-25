@@ -55,19 +55,8 @@ lspconfig.sumneko_lua.setup {
 }
 
 lspconfig.pylsp.setup {
-  cmd = {"pylsp"},
   capabilities = capabilities,
-  on_attach = on_attach,
-  settings = {
-    pylsp = {
-      plugins = {
-        black = {
-          enable = true,
-          line_length = 80
-        }
-      }
-    }
-  }
+  on_attach = on_attach
 }
 
 lspconfig.clangd.setup {

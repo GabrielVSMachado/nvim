@@ -168,7 +168,7 @@ packer.startup(function()
     cmd = 'Telescope',
     tag = '0.1.0',
     requires = {
-      { 'nvim-lua/plenary.nvim' }
+      'nvim-lua/plenary.nvim'
     },
     config = function()
       local ok, module = pcall(require, 'telescope')
@@ -218,4 +218,24 @@ packer.startup(function()
       }
     end
   }
+
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+      local ok, module = pcall(require, 'null-ls')
+      if not ok then
+        vim.notify("Couldn't load null-ls module !!!")
+        return
+      end
+      module.setup {
+        debug = false,
+        sources = {
+          module.builtins.formatting.black,
+          -- module.builtins.diagnostics.flake8
+          -- module.builtins.code_actions.refactoring
+        }
+      }
+    end
+  }
+
 end)
