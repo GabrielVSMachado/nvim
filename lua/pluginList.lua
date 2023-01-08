@@ -165,7 +165,6 @@ packer.startup(function()
 
   use {
     'nvim-telescope/telescope.nvim',
-    cmd = 'Telescope',
     tag = '0.1.0',
     requires = {
       'nvim-lua/plenary.nvim'
@@ -190,6 +189,8 @@ packer.startup(function()
 
   use {
     'lukas-reineke/indent-blankline.nvim',
+    opt = true,
+    event = "BufRead",
     config = function()
       local ok, module = pcall(require, 'indent_blankline')
       if not ok then
@@ -198,8 +199,8 @@ packer.startup(function()
       end
 
       module.setup {
-        show_current_context = false,
-        show_current_context_start = false,
+        show_current_context = true,
+        show_current_context_start = false
       }
     end
   }
@@ -235,6 +236,18 @@ packer.startup(function()
           -- module.builtins.code_actions.refactoring
         }
       }
+    end
+  }
+
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require "configs.bufferline"
+    end,
+    setup = function()
+      require "core.mappings".bufferline()
     end
   }
 

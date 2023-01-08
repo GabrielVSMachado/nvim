@@ -1,4 +1,4 @@
-local function map(mode, lhs, rhs, opts, lsp)
+local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
@@ -102,6 +102,11 @@ M.gitsigns = function(bufnr)
 
   -- Text object
   map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+end
+
+M.bufferline = function ()
+  map('n', '<Tab>', ":BufferLineCycleNext<CR>")
+  map('n', '<S-Tab>', ":BufferLineCyclePrev<CR>")
 end
 
 return M
