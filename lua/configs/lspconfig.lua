@@ -1,11 +1,11 @@
-local ok, lspconfig = pcall(require, "lspconfig")
+local ok, lspconfig = pcall(require, 'lspconfig')
 if not ok then return end
 
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
+  documentationFormat = { 'markdown', 'plaintext' },
   snippetSupport = true,
   preselectSupport = true,
   insertReplaceSupport = true,
@@ -15,40 +15,48 @@ capabilities.textDocument.completion.completionItem = {
   tagSupport = { valueSet = { 1 } },
   resolveSupport = {
     properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
+      'documentation',
+      'detail',
+      'additionalTextEdits'
     },
   },
 }
 
 
 local on_attach = function(_, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', "v:lua.vim.lsp.omnifunc")
-  require "core.mappings".lspConfigOnAttach({ buffer = bufnr })
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  require 'core.mappings'.lspConfigOnAttach({ buffer = bufnr })
 end
 
 local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
 
 lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     Lua = {
+      format = {
+        enable = true,
+        defaultConfig = {
+          max_line_length = "80",
+          remove_expression_list_finish_comma = "true",
+          table_separator_style = "comma"
+        }
+      },
       runtime = {
-        version = "LuaJIT",
+        version = 'LuaJIT',
         path = runtime_path
       },
       diagnostics = {
-        globals = { "vim" }
+        globals = { 'vim' }
       },
       workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = vim.api.nvim_get_runtime_file('', true)
       },
       telemetry = {
-        enable = false,
+        enable = false
       }
     },
   }
